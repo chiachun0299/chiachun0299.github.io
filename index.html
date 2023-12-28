@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>final</title>
-    <!--要修icon-->
+    <title>日晨酒店</title>
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -70,7 +70,17 @@
         </div>
       </div>
     </div>
-
+    <!-- 播放按鈕 -->
+    <div class="rightdown">
+      <button class="musicbtn" onclick="togglepage()">
+        <span class="material-symbols-outlined" id=""> north </span>
+      </button>
+      <button class="musicbtn" onclick="toggleAudio()">
+        <span class="material-symbols-outlined" id="buttonText">
+          volume_up
+        </span>
+      </button>
+    </div>
     <div class="index">
       <div class="container indexob">
         <div class="row">
@@ -252,6 +262,7 @@
     </div>
 
     <div class="features">
+      <canvas class="waveCanvas"></canvas>
       <h2 class="titlechinese">日晨特色</h2>
       <p class="titleenglish">FEATURES OF THE MORNING HOTEL</p>
       <div class="featuresob">
@@ -355,6 +366,7 @@
       </div>
     </div>
     <div class="services">
+      <canvas class="waveCanvas" id="waveCanvaschange"></canvas>
       <h2 class="titlechinese">日晨服務</h2>
       <p class="titleenglish">SERVICES OF THE MORNING HOTEL</p>
       <div class="servicesob">
@@ -501,6 +513,7 @@
       </div>
     </div>
     <div class="facilitys">
+      <canvas class="waveCanvas"></canvas>
       <h2 class="titlechinese">日晨設施</h2>
       <p class="titleenglish">FACILITYS OF THE MORNING HOTEL</p>
       <div class="facilitysob">
@@ -581,6 +594,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="hidden">
+      <audio id="myAudio" controls loop>
+        <source src="../music/slow-boat-meditation-7744.mp3" type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
     </div>
 
     <script src="./js/jquery-3.7.1.min.js"></script>

@@ -1,3 +1,4 @@
+//數字點選器
 var NumberField = {
   opts: {
     quantityParentSelector: ".quantity-wrapper",
@@ -99,7 +100,7 @@ $(document).ready(function () {
       // Increment
       $("input[name=" + fieldName + "]").val(currentVal + 1);
     } else {
-      // Otherwise put a 0 there
+      // Otherwise put a 1 there
       $("input[name=" + fieldName + "]").val(1);
     }
 
@@ -118,14 +119,15 @@ $(document).ready(function () {
       // Decrement one
       $("input[name=" + fieldName + "]").val(currentVal - 1);
     } else {
-      // Otherwise put a 1 there
-      $("input[name=" + fieldName + "]").val(1);
+      // Otherwise put a 0 there
+      $("input[name=" + fieldName + "]").val(0);
     }
 
     $(".quantity").change();
   });
 });
 
+//卡片切換器
 function swipe(direction) {
   console.log("swipe", direction);
 
@@ -183,3 +185,117 @@ function swipeRight() {
 }
 position1.addEventListener("click", swipeLeft);
 position2.addEventListener("click", swipeRight);
+
+//波浪動畫
+const canvases = document.querySelectorAll(".waveCanvas"); // 使用 class 選擇器
+const ctxArray = Array.from(canvases).map((canvas) => canvas.getContext("2d"));
+
+const waves = [
+  {
+    amplitude: 160,
+    frequency: 0.005,
+    speed: 0.5,
+    color: "#ab834b",
+    time: 0,
+    xOffset: 0,
+  },
+  {
+    amplitude: 150,
+    frequency: 0.005,
+    speed: 0.5,
+    color: "#ab834b",
+    time: 0,
+    xOffset: 0,
+  },
+  {
+    amplitude: 140,
+    frequency: 0.005,
+    speed: 0.5,
+    color: "#ab834b",
+    time: 0,
+    xOffset: 0,
+  },
+  {
+    amplitude: 130,
+    frequency: 0.005,
+    speed: 0.5,
+    color: "#ab834b",
+    time: 0,
+    xOffset: 0,
+  },
+  {
+    amplitude: 120,
+    frequency: 0.005,
+    speed: 0.5,
+    color: "#ab834b",
+    time: 0,
+    xOffset: 0,
+  },
+];
+
+function drawWaves(ctx, canvas) {
+  canvas.width = window.innerWidth * 2;
+  canvas.height = window.innerHeight * 2;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 保存當前畫布狀態
+  ctx.save();
+
+  // 將整個 canvas 旋轉
+  if (canvas.id === "waveCanvaschange") {
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(-Math.PI / 8); // 修改這裡的角度
+    ctx.translate(-canvas.width / 2, -canvas.height / 2);
+  } else {
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(Math.PI / 8);
+    ctx.translate(-canvas.width / 2, -canvas.height / 2);
+  }
+
+  waves.forEach((wave) => {
+    ctx.beginPath();
+    for (let i = 0; i < canvas.width; i++) {
+      const y =
+        wave.amplitude *
+        Math.sin(wave.frequency * i + wave.time) *
+        Math.sin(wave.xOffset);
+      ctx.lineTo(i, canvas.height / 2 + y);
+    }
+    ctx.strokeStyle = wave.color;
+    ctx.stroke();
+
+    // 模擬上升和下降運動
+    wave.xOffset += 0.005;
+    wave.time += 0.005;
+  });
+
+  // 還原畫布狀態
+  ctx.restore();
+
+  requestAnimationFrame(() => drawWaves(ctx, canvas));
+}
+
+function resizeCanvas() {
+  canvases.forEach((canvas, index) => {
+    drawWaves(ctxArray[index], canvas);
+  });
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+// JavaScript 函數，用於切換音樂播放狀態
+function toggleAudio() {
+  var audio = document.getElementById("myAudio");
+  var buttonText = document.getElementById("buttonText");
+
+  // 如果音樂正在播放，則暫停；否則，開始播放
+  if (audio.paused) {
+    audio.play();
+    buttonText.innerHTML = "no_sound";
+  } else {
+    audio.pause();
+    buttonText.innerHTML = "volume_up";
+  }
+}
