@@ -43,29 +43,6 @@ var NumberField = {
     } else {
       $('[data-quantity="minus"]').removeClass("disabled");
     }
-
-    /*
-      this.number = this.getNumber(this.$el.val());
- 
-      if (!this.isNumber(this.number) || this.minNumber > this.number) {
-          this.setNumber(this.minNumber);
-          // this.setNotice('(min. ' + this.minNumber + ')');
-
-          return false;
-      } */
-    /*
-
-      if (this.maxNumber < this.number) {
-          this.setNumber(this.maxNumber);
-          this.setNotice('(max. ' + this.maxNumber + ')');
-
-          return false;
-      }
-      
-      this.setNumber(this.number);
-      this.setNotice(this.notice);
-      return true;
-      */
   },
   getNumber: function (str) {
     return Math.ceil(parseFloat(this._replaceComma(str)));
@@ -127,66 +104,7 @@ $(document).ready(function () {
   });
 });
 
-//卡片切換器
-function swipe(direction) {
-  console.log("swipe", direction);
-
-  const position1 = document.querySelector(".card.position1");
-  const position2 = document.querySelector(".card.position2");
-
-  position1.removeEventListener("click", swipeLeft);
-  position2.removeEventListener("click", swipeRight);
-
-  const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    const searchedName = "position";
-    const searchedNameLength = searchedName.length;
-
-    const indexBegin = card.className.indexOf(searchedName);
-    const indexEnd = indexBegin + searchedNameLength + 1;
-    const foundClass = card.className.substring(indexBegin, indexEnd);
-    const foundClassNumber = parseInt(
-      foundClass.substring(searchedNameLength, searchedNameLength + 1)
-    );
-    let newNumber;
-    if (direction === "left") {
-      if (foundClassNumber >= 1 && foundClassNumber <= 2) {
-        newNumber = foundClassNumber - 1;
-      } else {
-        newNumber = 2;
-      }
-    } else if (direction === "right") {
-      if (foundClassNumber >= 0 && foundClassNumber <= 1) {
-        newNumber = foundClassNumber + 1;
-      } else {
-        newNumber = 0;
-      }
-    }
-    const newClass = searchedName + newNumber;
-    card.classList.add(newClass);
-    card.classList.remove(foundClass);
-  });
-
-  setTimeout(function () {
-    const newPosition1 = document.querySelector(".card.position1");
-    const newPosition2 = document.querySelector(".card.position2");
-
-    newPosition1.addEventListener("click", swipeLeft);
-    newPosition2.addEventListener("click", swipeRight);
-  }, 5);
-}
-const position1 = document.querySelector(".card.position1");
-const position2 = document.querySelector(".card.position2");
-function swipeLeft() {
-  swipe("left");
-}
-function swipeRight() {
-  swipe("right");
-}
-position1.addEventListener("click", swipeLeft);
-position2.addEventListener("click", swipeRight);
-
-//波浪動畫
+//波浪動畫//
 const canvases = document.querySelectorAll(".waveCanvas"); // 使用 class 選擇器
 const ctxArray = Array.from(canvases).map((canvas) => canvas.getContext("2d"));
 
@@ -255,7 +173,7 @@ function drawWaves(ctx, canvas) {
 
   waves.forEach((wave) => {
     ctx.beginPath();
-    for (let i = 0; i < canvas.width; i++) {
+    for (let i = 0; i < canvas.width; i += 10) {
       const y =
         wave.amplitude *
         Math.sin(wave.frequency * i + wave.time) *
@@ -299,3 +217,22 @@ function toggleAudio() {
     buttonText.innerHTML = "volume_up";
   }
 }
+
+//頁面回到最上
+document.addEventListener("DOMContentLoaded", function () {
+  // 在 DOM 載入完成後綁定事件
+
+  // 獲取按鈕元素
+  var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // 監聽按鈕點擊事件
+  scrollToTopBtn.addEventListener("click", function () {
+    // 滾動到頂部
+    // 可以使用 window.scrollTo 或 window.scroll，具體取決於瀏覽器支援
+    // 這裡使用 window.scrollTo，第一個參數為 x 座標，第二個參數為 y 座標
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // 可以添加平滑滾動效果
+    });
+  });
+});
