@@ -72,8 +72,8 @@
     </div>
     <!-- 播放按鈕 -->
     <div class="rightdown">
-      <button class="musicbtn" onclick="togglepage()">
-        <span class="material-symbols-outlined" id=""> north </span>
+      <button class="musicbtn" onclick="togglepage()" id="scrollToTopBtn">
+        <span class="material-symbols-outlined" id="scrollText"> north </span>
       </button>
       <button class="musicbtn" onclick="toggleAudio()">
         <span class="material-symbols-outlined" id="buttonText">
@@ -274,10 +274,10 @@
                   <div class="featuresblock" id="featuresblock1">
                     <div class="featuresbrownmove">
                       <div class="textgroup">
-                        <p class="featurestext">浮嵐暖翠套房位於酒店四方，</p>
-                        <p class="featurestext">兩側環繞落地窗，</p>
-                        <p class="featurestext">擁有最佳的觀賞視野，</p>
-                        <p class="featurestext">給您最佳的感受體驗。</p>
+                        <p class="featurestext">日晨內部提供蒸浴設備，</p>
+                        <p class="featurestext">乾淨通風裝潢採自然風格，</p>
+                        <p class="featurestext">享受疲倦被沖刷掉，</p>
+                        <p class="featurestext">酣暢淋漓般的心情。</p>
                       </div>
                     </div>
                     <div class="featuresbrown">
@@ -324,10 +324,10 @@
                   <div class="featuresblock" id="featuresblock3">
                     <div class="featuresbrownmove">
                       <div class="textgroup">
-                        <p class="featurestext">浮嵐暖翠套房位於酒店四方，</p>
-                        <p class="featurestext">兩側環繞落地窗，</p>
-                        <p class="featurestext">擁有最佳的觀賞視野，</p>
-                        <p class="featurestext">給您最佳的感受體驗。</p>
+                        <p class="featurestext">餐飲講就環境和食材，</p>
+                        <p class="featurestext">星級大廚提供多樣性菜色，</p>
+                        <p class="featurestext">空間氛圍明朗舒適，</p>
+                        <p class="featurestext">超越單純對享用美食的定義。</p>
                       </div>
                     </div>
                     <div class="featuresbrown">
@@ -358,15 +358,12 @@
             <p>
               跨越時空與地理限制，從踏進日晨的那刻，即是一場旅途的開頭，一次專屬的體驗。
             </p>
-            <p>
-              這是一個與風景完美結合，座落於山光水色之間，結合歐式古典貴族般優雅氣勢，並輔以東方哲學設計而成的酒店。
-            </p>
           </div>
         </div>
       </div>
     </div>
     <div class="services">
-      <canvas class="waveCanvas" id="waveCanvaschange"></canvas>
+      <!--<canvas class="waveCanvas"></canvas>-->
       <h2 class="titlechinese">日晨服務</h2>
       <p class="titleenglish">SERVICES OF THE MORNING HOTEL</p>
       <div class="servicesob">
@@ -430,90 +427,16 @@
         </div>
       </div>
     </div>
-    <div class="roomtypes">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="carrousel">
-              <div class="c0 position0 card" onclick="changeImage(1)">
-                <div class="carrouselbrown">
-                  <div class="carrouselob">
-                    <ul>
-                      <li>
-                        <p class="carrouselp">高級設施0</p>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">即刻入住</button>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">查看更多</button>
-                      </li>
-                    </ul>
-                    <p class="textcontent">
-                      專門為小資族打造，價格方面實惠，
-                      設備方面一應具全，擁有隱秘性高的獨立床位，幹凈簡約的廁所及淋浴間浴間。
-                      早晨陽光透過窗戶灑落進房間，明亮的舒適感，讓人心曠神怡，
-                      讓小資族們在一方天地中仍有自己的一片風景，享受沐浴日光的時刻。
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="c1 position1 card" onclick="changeImage(2)">
-                <div class="carrouselbrown">
-                  <div class="carrouselob">
-                    <ul>
-                      <li>
-                        <p class="carrouselp">高級設施1</p>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">即刻入住</button>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">查看更多</button>
-                      </li>
-                    </ul>
-                    <p class="textcontent">
-                      專門為小資族打造，價格方面實惠，
-                      設備方面一應具全，擁有隱秘性高的獨立床位，幹凈簡約的廁所及淋浴間浴間。
-                      早晨陽光透過窗戶灑落進房間，明亮的舒適感，讓人心曠神怡，
-                      讓小資族們在一方天地中仍有自己的一片風景，享受沐浴日光的時刻。
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="c2 position2 card" onclick="changeImage(3)">
-                <div class="carrouselbrown">
-                  <div class="carrouselob">
-                    <ul>
-                      <li>
-                        <p class="carrouselp">高級設施2</p>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">即刻入住</button>
-                      </li>
-                      <li>
-                        <button class="carrouselbutton">查看更多</button>
-                      </li>
-                    </ul>
-                    <p class="textcontent">
-                      專門為小資族打造，價格方面實惠，
-                      設備方面一應具全，擁有隱秘性高的獨立床位，幹凈簡約的廁所及淋浴間浴間。
-                      早晨陽光透過窗戶灑落進房間，明亮的舒適感，讓人心曠神怡，
-                      讓小資族們在一方天地中仍有自己的一片風景，享受沐浴日光的時刻。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="roomtypesbg">
-        <div class="roomtypesbrown"></div>
+
+    <div class="roomtypesbg">
+      <div class="roomtypesbrown">
+        <p>
+          這是一個與風景完美結合，座落於山光水色之間，結合歐式古典貴族般優雅氣勢，並輔以東方哲學設計而成的酒店。
+        </p>
       </div>
     </div>
     <div class="facilitys">
-      <canvas class="waveCanvas"></canvas>
+      <canvas class="waveCanvas" id="waveCanvaschange"></canvas>
       <h2 class="titlechinese">日晨設施</h2>
       <p class="titleenglish">FACILITYS OF THE MORNING HOTEL</p>
       <div class="facilitysob">
@@ -594,6 +517,51 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-10">
+            <ul>
+              <li>
+                <a href="#">關於日晨</a>
+              </li>
+              <li>
+                <a href="#">最新消息</a>
+              </li>
+              <li>
+                <a href="#">房型介紹</a>
+              </li>
+              <li>
+                <a href="#">美食饗宴</a>
+              </li>
+              <li>
+                <a href="#">設施一覽</a>
+              </li>
+              <li>
+                <a href="#">優惠活動</a>
+              </li>
+              <li>
+                <a href="#">交通景點</a>
+              </li>
+              <li>
+                <a href="#">聯絡我們</a>
+              </li>
+              <li>
+                <a href="#">繁體中文</a>
+              </li>
+              <li>
+                <a href="#">會員登入</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p>台北市南港區科技路一段100號</p>
+      <p>
+        No. 100, Sec. 1, Teconology St., Nangang Dist., Taipei City, Taiwan
+        (R.O.C.)
+      </p>
     </div>
 
     <div class="hidden">
